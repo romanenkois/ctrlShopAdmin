@@ -1,0 +1,54 @@
+// * {
+//     outline: 1px solid red;
+// }
+
+.wrapper {
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .item {
+            // background-color: red;
+            display: flex;
+            flex-direction: row;
+
+            .general-info {
+                width: 20%;
+                padding: 8px;
+
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+
+            }
+
+            .other-info {
+                width: 80%;
+
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 8px;
+
+                .info {
+                    padding: 8px;
+                    width: 25%;
+
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+                }
+
+                .order-data {
+                    .order-data-item {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                    }
+                }
+            }
+        }
+    }
+}

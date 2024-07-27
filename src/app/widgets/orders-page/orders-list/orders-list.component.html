@@ -1,0 +1,43 @@
+<div class="wrapper">
+    <div class="content">
+        @for (item of orders; track $index) {
+            <div class="item">
+                <div class="general-info">
+                    <p>{{item.date | date: 'hh:mm d/M/y'}}</p>
+                    <p>{{item.userId}}</p>
+                    <p>{{item.checkStatus}}</p>
+                </div>
+                <div class="other-info">
+                    <div class="info order-data">
+                        @for (orderData of item.orderData; track $index) {
+                            <div class="order-data-item">
+                                <p>{{orderData.productId}}</p>
+                                <p>{{orderData.productQuantity}}</p>
+                            </div>
+                        }
+                    </div>
+                    <div class="info customer-data">
+                        <p>{{item.customerData.inputName}}</p>
+                        <p>{{item.customerData.inputEmail}}</p>
+                        <p>{{item.customerData.inputPhone}}</p>
+                    </div>
+                    <div class="info delivery-data">
+                        <p>{{item.deliveryData.inputCountry}}</p>
+                        <p>{{item.deliveryData.inputCity}}</p>
+                        <p>{{item.deliveryData.inputPostOffice}}</p>
+                    </div>
+                    <div class="info extra-data">
+                        <div *ngIf="item.extraData.inputPromoCode">
+                            <p>промокод</p>
+                            <p>{{item.extraData.inputPromoCode}}<p></p>
+                        </div>
+                        <div *ngIf="item.extraData.inputComment">
+                            <p>коментар</p>
+                            <p>{{item.extraData.inputComment}}<p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
