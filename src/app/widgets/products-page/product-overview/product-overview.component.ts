@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductOverviewService } from './api/product-overview.service';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-overview',
@@ -15,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductOverviewComponent implements OnInit {
   private fb: FormBuilder = inject(FormBuilder);
   private route: ActivatedRoute = inject(ActivatedRoute);
+  private router: Router = inject(Router);
 
   private productOverviewService: ProductOverviewService = inject(ProductOverviewService);
 
@@ -30,7 +31,8 @@ export class ProductOverviewComponent implements OnInit {
   });
 
   newProduct() {
-    this.productId = '';
+    this.router.navigate(['./products'], { queryParams: { id: null } });
+    // this.productId = '';
     this.product = [];
     this.productForm.reset();
   }
@@ -47,6 +49,8 @@ export class ProductOverviewComponent implements OnInit {
           this.product = product;
           this.productForm.patchValue(this.product);
         });
+      } else {
+        this.product = [];
       }
     });
 
