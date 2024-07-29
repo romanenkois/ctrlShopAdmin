@@ -1,0 +1,34 @@
+<div class="wrapper">
+    <div class="pictures">
+        <div class="picture">
+            <img *ngIf="product.image" [src]="product.image[0]">
+        </div>
+    </div>
+
+    <div class="info">
+        <form
+        [formGroup]="productForm"
+        >
+            <div class="form">
+                <p>назва</p>
+                <input type="text" formControlName="name">
+            </div>
+            <div class="form">
+                <p>категорія</p>
+                <input type="text" formControlName="category">
+            </div>
+            <div class="form">
+                <p>ціна</p>
+                <input type="text" formControlName="price">
+            </div>
+            <div class="form">
+                <p>опис</p>
+                <input type="text" formControlName="description">
+            </div>
+        </form>
+    </div>
+
+    <div class="actions">
+        <button>збеееерегтиииии</button>
+    </div>
+</div>

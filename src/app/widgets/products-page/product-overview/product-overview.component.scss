@@ -1,0 +1,17 @@
+.wrapper {
+    .pictures {
+        width: 100%;
+        height: 100%;
+
+        .picture {
+            width: 100%;
+            height: 300px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+}

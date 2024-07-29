@@ -13,6 +13,10 @@
             display: flex;
             flex-direction: row;
 
+            p {
+                word-break: break-all;
+            }
+
             .general-info {
                 width: 20%;
                 padding: 8px;
@@ -46,6 +50,10 @@
                         display: flex;
                         flex-direction: row;
                         justify-content: space-between;
+
+                        // p:first-child {
+                        //     word-break: break-all;
+                        // }
                     }
                 }
             }

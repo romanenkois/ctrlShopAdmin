@@ -1,5 +1,53 @@
-/* You can add global styles to this file, and also import other style files */
+// @import url('https://fonts.googleapis.com/css2?family=Podkova:wght@400..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Podkova:wght@400..800&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+    --black-color: #0e0e0e;
+    --dark-color: #241d1e;
+    --dark-gray-color: #787676;
+    --gray-color: #c5c5c5;
+    --light-gray-color: #e9e9e9;
+    --white-color: #fcfcfc;
+    --yellow-color: #ffee00;
+    --yellow-hover-color: #f0e000;
+    --dark-yellow-color: #dbba00;
+
+
+    --regular-font: rubik, Arial, Helvetica, sans-serif;
+    // --highlight-font: podkova, monospace;
+
+    --small-shadow: 2px 2px 4px 4px rgba(28, 23, 23, 0.05);
+    --medium-shadow: 4px 4px 8px 8px rgba(28, 23, 23, 0.05);
+    --big-shadow: 5px 5px 10px 10px rgba(28, 23, 23, 0.05);
+
+    --small-reverse-shadow: 2px 2px 4px 4px rgba(230, 230, 230, 0.1);
+    --medium-reverse-shadow: 4px 4px 8px 8px rgba(220, 220, 220, 0.1);
+}
+
+::selection {
+    background-color: var(--yellow-color);
+    color: var(--black-color);
+
+}
+
+body, html {
+    padding: 0;
+    margin: 0;
+
+    font-family: var(--regular-font);
+}
 
 p {
     margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--black-color);
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
 }

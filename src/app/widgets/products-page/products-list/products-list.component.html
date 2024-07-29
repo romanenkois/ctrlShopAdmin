@@ -1,0 +1,28 @@
+<div class="wrapper">
+    <div class="actions">
+        <button (click)="togleImageRender()">мяяуууууууу</button>
+    </div>
+    <div class="content">
+        @for (item of products; track $index) {
+            <div class="item">
+                <div class="picture">
+                    <img *ngIf="this.renderImages" [src]="item.image[0]">
+                    <div *ngIf="!this.renderImages" class="placeholder"></div>
+                </div>
+
+
+                <div class="data">
+                    <div class="general">
+                        <p>{{item.name}}</p>
+                        <p>{{item.category}}</p>
+                        <p>{{item.price}} грн.</p>
+                    </div>
+                    <div class="description">
+                        <p>{{item.description}}</p>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>

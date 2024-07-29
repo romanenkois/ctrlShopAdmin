@@ -1,0 +1,24 @@
+// * {
+//     outline: 1px red solid;
+// }
+
+.wrapper {
+    padding: 12px 42px;
+
+    .form {
+        margin-bottom: 12px;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+
+        .list {
+            width: 60%;
+        }
+        .overview {
+            width: 40%;
+        }
+    }
+}
