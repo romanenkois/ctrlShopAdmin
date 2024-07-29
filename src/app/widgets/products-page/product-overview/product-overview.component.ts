@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductOverviewService } from './api/product-overview.service';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-overview',
@@ -13,10 +14,11 @@ import { CommonModule } from '@angular/common';
 })
 export class ProductOverviewComponent implements OnInit {
   private fb: FormBuilder = inject(FormBuilder);
+  private route: ActivatedRoute = inject(ActivatedRoute);
 
   private productOverviewService: ProductOverviewService = inject(ProductOverviewService);
 
-  productId: string = '668c09a5c0e1256172e557a9';
+  productId: string = '';
   product: any = [];
   // productForm!: FormGroup;
 
@@ -27,13 +29,27 @@ export class ProductOverviewComponent implements OnInit {
     description: ['', Validators.required],
   });
 
+  newProduct() {
+    this.productId = '';
+    this.product = [];
+    this.productForm.reset();
+  }
+
+  saveProduct() {
+    throw new Error('Method not implemented.');
+  }
+
   ngOnInit() {
-    if (this.productId) {
-      this.productOverviewService.getProduct(this.productId).subscribe((product: any) => {
-        this.product = product;
-        this.productForm.patchValue(this.product);
-      });
-    }
+    this.route.queryParams.subscribe(params => {
+      this.productId = params['id'];
+      if (this.productId || this.productId != '') {
+        this.productOverviewService.getProduct(this.productId).subscribe((product: any) => {
+          this.product = product;
+          this.productForm.patchValue(this.product);
+        });
+      }
+    });
+
 
     this.productForm.valueChanges.subscribe(console.log);
   }

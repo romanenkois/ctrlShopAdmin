@@ -12,4 +12,12 @@ export class ProductOverviewService {
   getProduct(id: string) {
     return this.http.get(`${this.BASE_URL}/product/${id}`);
   }
+
+  updateProduct(id: string, product: any) {
+    throw new Error('Method not implemented.');
+  }
+
+  uploadProduct(product: any) {
+    throw new Error('Method not implemented.');
+  }
 }

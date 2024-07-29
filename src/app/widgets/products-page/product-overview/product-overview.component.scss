@@ -58,6 +58,12 @@
             flex-direction: column;
             gap: 12px;
 
+            .product-id {
+                p {
+                    height: 16px;
+                    color: var(--dark-gray-color);
+                }
+            }
             .form {
                 display: flex;
                 flex-direction: column;

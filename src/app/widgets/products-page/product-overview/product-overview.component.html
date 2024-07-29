@@ -1,7 +1,8 @@
 <div class="wrapper">
     <div class="actions">
         <button
-        class="new-item">
+        class="new-item"
+        (click)="newProduct()">
             новий товар
         </button>
     </div>
@@ -17,6 +18,10 @@
         <form
         [formGroup]="productForm"
         >
+            <div class="product-id">
+                <p *ngIf="product._id">{{product._id}}</p>
+                <p *ngIf="!product._id">новий продукт</p>
+            </div>
             <div class="form">
                 <p>назва</p>
                 <input type="text" formControlName="name">
@@ -39,7 +44,9 @@
     <div class="item-actions">
         <button
         class="save-button"
-
-        >збеееерегтиииии</button>
+        (click)="saveProduct()"
+        >
+            збеееерегтиииии
+        </button>
     </div>
 </div>

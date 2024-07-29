@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ProductsListService } from './api/products-list.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products-list',
@@ -10,7 +11,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './products-list.component.scss'
 })
 export class ProductsListComponent implements OnInit {
-  private productsList: ProductsListService = new ProductsListService();
+  private router: Router = inject(Router);
+
+  private productsList: ProductsListService = inject(ProductsListService);
 
   products: any = [];
 
@@ -18,6 +21,10 @@ export class ProductsListComponent implements OnInit {
 
   togleImageRender() {
     this.renderImages = !this.renderImages;
+  }
+
+  setActiveProduct(id: any) {
+    this.router.navigate(['./products'], { queryParams: { id: id } });
   }
 
   ngOnInit(): void {

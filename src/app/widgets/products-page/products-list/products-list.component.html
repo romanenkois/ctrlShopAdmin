@@ -1,15 +1,19 @@
 <div class="wrapper">
     <div class="actions">
-        <button (click)="togleImageRender()">мяяуууууууу</button>
+        <button (click)="togleImageRender()">
+            <p>рендер картинок</p>
+            <!-- <div></div> -->
+        </button>
     </div>
     <div class="content">
         @for (item of products; track $index) {
             <div class="item">
-                <div class="picture">
+                <div
+                class="picture"
+                (click)="setActiveProduct(item._id)">
                     <img *ngIf="this.renderImages" [src]="item.image[0]">
                     <div *ngIf="!this.renderImages" class="placeholder"></div>
                 </div>
-
 
                 <div class="data">
                     <div class="general">
@@ -20,7 +24,6 @@
                     <div class="description">
                         <p>{{item.description}}</p>
                     </div>
-
                 </div>
             </div>
         }

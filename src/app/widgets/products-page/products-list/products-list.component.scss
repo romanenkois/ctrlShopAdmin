@@ -7,6 +7,32 @@
     flex-direction: column;
     gap: 12px;
 
+    .actions {
+        button {
+            width: 200px;
+            padding: 8px 16px;
+            box-sizing: border-box;
+
+            transition: all 0.2s ease-out;
+
+            border: none;
+            background-color: var(--light-gray-color);
+
+            p {
+                font-weight: 400;
+                font-size: 16px;
+                word-break: break-all;
+            }
+        }
+        button:hover {
+            background-color: var(--light-gray-hover-color);
+        }
+        button:active {
+            transform: scale(0.97);
+            background-color: var(--light-gray-hover-color);
+        }
+    }
+
     .content {
         display: flex;
         flex-direction: column;
