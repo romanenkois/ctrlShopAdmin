@@ -31,7 +31,7 @@ export class ProductOverviewComponent implements OnInit {
     if (this.productId) {
       this.productOverviewService.getProduct(this.productId).subscribe((product: any) => {
         this.product = product;
-        this.productForm.patchValue(product);
+        this.productForm.patchValue(this.product);
       });
     }
 

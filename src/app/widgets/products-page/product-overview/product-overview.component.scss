@@ -1,4 +1,36 @@
+// * {
+//     outline: 1px red solid;
+// }
+
 .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .actions {
+        button {
+            width: 100%;
+            padding: 8px 16px;
+            box-sizing: border-box;
+
+            font-weight: 400;
+            font-size: 16px;
+            word-break: break-all;
+
+            transition: all 0.2s ease-out;
+
+            border: none;
+            background-color: var(--light-gray-color);
+        }
+        button:hover {
+            background-color: var(--light-gray-hover-color);
+        }
+        button:active {
+            transform: scale(0.97);
+            background-color: var(--light-gray-hover-color);
+        }
+    }
+
     .pictures {
         width: 100%;
         height: 100%;
@@ -12,6 +44,68 @@
                 height: 100%;
                 object-fit: cover;
             }
+            .placeholder {
+                width: 100%;
+                height: 100%;
+                background-color: var(--dark-color);
+            }
+        }
+    }
+
+    .info {
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            .form {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+                input[type=text] {
+                    padding: 8px ;
+                    width: 100%;
+                    box-sizing: border-box;
+
+                    transition: all 0.2s ease-out;
+
+                    outline: none;
+                    border: none;
+                    border-bottom: 2px solid var(--black-color);
+
+                    font-size: 16px;
+                    font-weight: 400;
+                }
+                input[type=text]:focus {
+                    border: none;
+                    border-bottom: 2px solid var(--gray-color);
+                }
+            }
+        }
+    }
+
+    .item-actions {
+        .save-button {
+            width: 100%;
+            padding: 8px 16px;
+            box-sizing: border-box;
+
+            font-weight: 400;
+            font-size: 16px;
+            word-break: break-all;
+
+            transition: all 0.2s ease-out;
+
+            border: none;
+            background-color: var(--yellow-color);
+        }
+        .save-button:hover {
+            background-color: var(--yellow-hover-color);
+        }
+        .save-button:active {
+            transform: scale(0.97);
+            background-color: var(--yellow-hover-color);
         }
     }
 }

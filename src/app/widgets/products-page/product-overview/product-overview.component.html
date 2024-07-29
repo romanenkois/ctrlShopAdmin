@@ -1,7 +1,15 @@
 <div class="wrapper">
+    <div class="actions">
+        <button
+        class="new-item">
+            новий товар
+        </button>
+    </div>
+
     <div class="pictures">
         <div class="picture">
             <img *ngIf="product.image" [src]="product.image[0]">
+            <div *ngIf="!product.image" class="placeholder"></div>
         </div>
     </div>
 
@@ -28,7 +36,10 @@
         </form>
     </div>
 
-    <div class="actions">
-        <button>збеееерегтиииии</button>
+    <div class="item-actions">
+        <button
+        class="save-button"
+
+        >збеееерегтиииии</button>
     </div>
 </div>

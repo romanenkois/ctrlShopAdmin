@@ -7,6 +7,7 @@
     --dark-gray-color: #787676;
     --gray-color: #c5c5c5;
     --light-gray-color: #e9e9e9;
+    --light-gray-hover-color: #dcdcdc;
     --white-color: #fcfcfc;
     --yellow-color: #ffee00;
     --yellow-hover-color: #f0e000;
@@ -28,6 +29,10 @@
     background-color: var(--yellow-color);
     color: var(--black-color);
 
+}
+
+* {
+    font-family: var(--regular-font);
 }
 
 body, html {
