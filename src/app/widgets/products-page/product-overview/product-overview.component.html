@@ -12,6 +12,14 @@
             <img *ngIf="product.image" [src]="product.image[0]">
             <div *ngIf="!product.image" class="placeholder"></div>
         </div>
+        <div class="picture-actions">
+            <form>
+                <label for="picture-upload" class="custom-file-upload">
+                    завантажити зображення
+                </label>
+                <input id="picture-upload" type="file" accept="image/png, image/jpeg">
+            </form>
+        </div>
     </div>
 
     <div class="info">
