@@ -21,6 +21,8 @@ export class ProductOverviewComponent implements OnInit {
 
   productId: string = '';
   product: any = [];
+  images: File[] = [];
+  productFormValid: boolean = false;
   // productForm!: FormGroup;
 
   productForm: FormGroup = this.fb.group({
@@ -38,12 +40,50 @@ export class ProductOverviewComponent implements OnInit {
   }
 
   saveProduct() {
+    if (!this.productFormValid) {
+      console.log('Form is invalid');
+      return;
+    }
+
     let productInDb
-    this.productOverviewService.getProduct(this.productId).subscribe((product: any) => {
-      productInDb = product;
+    if (this.productId) {
+      this.productOverviewService.getProduct(this.productId).subscribe((product: any) => {
+        productInDb = product;
 
+        if (productInDb) {
+          console.log('Product found');
+        }
+        else {
+          if (!productInDb) {
+            console.log('Product not found');
+            // let newProduct: any = [];
+            // newProduct.push(this.productForm.value);
+            // newProduct.images.push('../../../../../public/asa.png')
 
-    });
+            // this.productOverviewService.uploadProduct(newProduct).subscribe((product: any) => {
+            //   console.log('Product uploaded successfully');
+            // });
+          }
+        }
+      });
+    } else {
+      console.log('мяуууууууууцйджуйцжду');
+
+      this.productOverviewService.uploadProduct(
+        this.productForm.value.name,
+        this.productForm.value.category,
+        this.productForm.value.price,
+        this.productForm.value.description,
+        this.images
+      ).subscribe(
+        responce => {
+          console.log('Product uploaded successfully', responce);
+        },
+        error => {
+          console.log();
+        }
+      );
+    }
   }
 
   ngOnInit() {
@@ -60,6 +100,8 @@ export class ProductOverviewComponent implements OnInit {
     });
 
 
-    this.productForm.valueChanges.subscribe(console.log);
+    this.productForm.valueChanges.subscribe(() => {
+      this.productFormValid = this.productForm.valid;
+    });
   }
 }
