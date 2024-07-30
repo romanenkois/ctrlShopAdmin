@@ -38,7 +38,12 @@ export class ProductOverviewComponent implements OnInit {
   }
 
   saveProduct() {
-    throw new Error('Method not implemented.');
+    let productInDb
+    this.productOverviewService.getProduct(this.productId).subscribe((product: any) => {
+      productInDb = product;
+
+
+    });
   }
 
   ngOnInit() {

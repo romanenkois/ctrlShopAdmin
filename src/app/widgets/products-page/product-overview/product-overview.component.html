@@ -7,44 +7,45 @@
         </button>
     </div>
 
-    <div class="pictures">
-        <div class="picture">
-            <img *ngIf="product.image" [src]="product.image[0]">
-            <div *ngIf="!product.image" class="placeholder"></div>
-        </div>
-        <div class="picture-actions">
-            <form>
-                <label for="picture-upload" class="custom-file-upload">
-                    завантажити зображення
-                </label>
-                <input id="picture-upload" type="file" accept="image/png, image/jpeg">
-            </form>
-        </div>
-    </div>
-
-    <div class="info">
+    <div class="product">
         <form
-        [formGroup]="productForm"
-        >
-            <div class="product-id">
-                <p *ngIf="product._id">{{product._id}}</p>
-                <p *ngIf="!product._id">новий продукт</p>
+        [formGroup]="productForm">
+            <div class="pictures">
+                <div class="picture">
+                    <img *ngIf="product.image" [src]="product.image[0]">
+                    <div *ngIf="!product.image" class="placeholder"></div>
+                </div>
+                <div class="picture-actions">
+                    <form>
+                        <label for="picture-upload" class="custom-file-upload">
+                            завантажити зображення
+                        </label>
+                        <input id="picture-upload" type="file" accept="image/png, image/jpeg">
+                    </form>
+                </div>
             </div>
-            <div class="form">
-                <p>назва</p>
-                <input type="text" formControlName="name">
-            </div>
-            <div class="form">
-                <p>категорія</p>
-                <input type="text" formControlName="category">
-            </div>
-            <div class="form">
-                <p>ціна</p>
-                <input type="text" formControlName="price">
-            </div>
-            <div class="form">
-                <p>опис</p>
-                <input type="text" formControlName="description">
+
+            <div class="info">
+                <div class="product-id">
+                    <p *ngIf="product._id">{{product._id}}</p>
+                    <p *ngIf="!product._id">новий продукт</p>
+                </div>
+                <div class="form">
+                    <p>назва</p>
+                    <input type="text" formControlName="name">
+                </div>
+                <div class="form">
+                    <p>категорія</p>
+                    <input type="text" formControlName="category">
+                </div>
+                <div class="form">
+                    <p>ціна</p>
+                    <input type="text" formControlName="price">
+                </div>
+                <div class="form">
+                    <p>опис</p>
+                    <input type="text" formControlName="description">
+                </div>
             </div>
         </form>
     </div>
