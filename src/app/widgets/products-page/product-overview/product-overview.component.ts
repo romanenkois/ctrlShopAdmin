@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProductOverviewService } from './api/product-overview.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-product-overview',
@@ -16,14 +17,15 @@ export class ProductOverviewComponent implements OnInit {
   private fb: FormBuilder = inject(FormBuilder);
   private route: ActivatedRoute = inject(ActivatedRoute);
   private router: Router = inject(Router);
+  private http: HttpClient = inject(HttpClient);
 
   private productOverviewService: ProductOverviewService = inject(ProductOverviewService);
 
   productId: string = '';
   product: any = [];
   images: File[] = [];
+  imageUrls: string[] = [];
   productFormValid: boolean = false;
-  // productForm!: FormGroup;
 
   productForm: FormGroup = this.fb.group({
     name: ['', Validators.required],
@@ -86,10 +88,22 @@ export class ProductOverviewComponent implements OnInit {
     }
   }
 
+  loadImageAsFile(imagePath: string) {
+    this.http.get(imagePath, { responseType: 'blob' }).subscribe(blob => {
+      const fileName = imagePath.split('/').pop() || 'asa.png';
+      const file = new File([blob], fileName, { type: blob.type });
+      this.images.push(file);
+      this.imageUrls.push(URL.createObjectURL(file));
+    });
+  }
+
   ngOnInit() {
+    this.loadImageAsFile('asa.png');
+
     this.route.queryParams.subscribe(params => {
       this.productId = params['id'];
-      if (this.productId || this.productId != '') {
+      if (this.productId !== undefined && this.productId !== null && this.productId !== '') {
+        console.log('Product ID:', this.productId);
         this.productOverviewService.getProduct(this.productId).subscribe((product: any) => {
           this.product = product;
           this.productForm.patchValue(this.product);

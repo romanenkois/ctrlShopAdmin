@@ -11,10 +11,16 @@
         <form
         [formGroup]="productForm">
             <div class="pictures">
-                <div class="picture">
+                @for (item of this.imageUrls; track $index) {
+                    <div class="picture">
+                        <img *ngIf="item" [src]="item">
+                        <div *ngIf="!item" class="placeholder"></div>
+                    </div>
+                }
+                <!-- <div class="picture">
                     <img *ngIf="product.image" [src]="product.image[0]">
                     <div *ngIf="!product.image" class="placeholder"></div>
-                </div>
+                </div> -->
                 <div class="picture-actions">
                     <form>
                         <label for="picture-upload" class="custom-file-upload">

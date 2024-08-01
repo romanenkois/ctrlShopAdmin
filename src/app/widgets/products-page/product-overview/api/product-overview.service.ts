@@ -23,7 +23,7 @@ export class ProductOverviewService {
     category: string,
     price: string,
     description: string,
-    images: File[]
+    image: File[]
   ) {
     const formData: FormData = new FormData();
 
@@ -32,8 +32,8 @@ export class ProductOverviewService {
     formData.append('price', price);
     formData.append('description', description);
 
-    Array.from(images).forEach((image: any) => {
-      formData.append('images', image, image.name);
+    Array.from(image).forEach((image: any) => {
+      formData.append('image', image, image.name);
     });
 
     const headers = new HttpHeaders({
