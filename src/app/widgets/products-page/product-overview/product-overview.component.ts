@@ -36,9 +36,12 @@ export class ProductOverviewComponent implements OnInit {
 
   newProduct() {
     this.router.navigate(['./products'], { queryParams: { id: null } });
-    // this.productId = '';
     this.product = [];
     this.productForm.reset();
+
+    this.images = [];
+    this.imageUrls = [];
+    this.loadImageAsFile('asa.png');
   }
 
   saveProduct() {
@@ -46,48 +49,45 @@ export class ProductOverviewComponent implements OnInit {
       console.log('Form is invalid');
       return;
     }
-
-    let productInDb
     if (this.productId) {
-      this.productOverviewService.getProduct(this.productId).subscribe((product: any) => {
-        productInDb = product;
-
-        if (productInDb) {
-          console.log('Product found');
-        }
-        else {
-          if (!productInDb) {
-            console.log('Product not found');
-            // let newProduct: any = [];
-            // newProduct.push(this.productForm.value);
-            // newProduct.images.push('../../../../../public/asa.png')
-
-            // this.productOverviewService.uploadProduct(newProduct).subscribe((product: any) => {
-            //   console.log('Product uploaded successfully');
-            // });
-          }
-        }
-      });
+      this.saveChangedProduct();
     } else {
-      console.log('мяуууууууууцйджуйцжду');
-
-      this.productOverviewService.uploadProduct(
-        this.productForm.value.name,
-        this.productForm.value.category,
-        this.productForm.value.price,
-        this.productForm.value.description,
-        this.images
-      ).subscribe(
-        responce => {
-          console.log('Product uploaded successfully', responce);
-        },
-        error => {
-          console.log();
-        }
-      );
+      this.saveNewProduct();
     }
   }
 
+  saveNewProduct() {
+    if (this.images.length < 1) {
+      this.loadImageAsFile('asa.png');
+    };
+
+    this.productOverviewService.uploadProduct(
+      this.productForm.value.name,
+      this.productForm.value.category,
+      this.productForm.value.price,
+      this.productForm.value.description,
+      this.images
+    ).subscribe(
+      responce => {
+        console.log('Product uploaded successfully', responce);
+      },
+      error => {
+        console.log('Error uploading product', error);
+      }
+    );
+  }
+
+  saveChangedProduct() {
+    this.productOverviewService.getProduct(this.productId).subscribe((product: any) => {
+      if (product) {
+        console.log('Product found', product);
+      } else {
+        console.log('Product not found');
+      }
+    });
+  }
+
+  // Used to load image from assets folder, used to load some default image
   loadImageAsFile(imagePath: string) {
     this.http.get(imagePath, { responseType: 'blob' }).subscribe(blob => {
       const fileName = imagePath.split('/').pop() || 'asa.png';
@@ -98,12 +98,10 @@ export class ProductOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loadImageAsFile('asa.png');
-
     this.route.queryParams.subscribe(params => {
+      console.log('Product ID:', this.productId);
       this.productId = params['id'];
       if (this.productId !== undefined && this.productId !== null && this.productId !== '') {
-        console.log('Product ID:', this.productId);
         this.productOverviewService.getProduct(this.productId).subscribe((product: any) => {
           this.product = product;
           this.productForm.patchValue(this.product);
@@ -112,7 +110,6 @@ export class ProductOverviewComponent implements OnInit {
         this.product = [];
       }
     });
-
 
     this.productForm.valueChanges.subscribe(() => {
       this.productFormValid = this.productForm.valid;

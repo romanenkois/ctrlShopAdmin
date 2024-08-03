@@ -7,8 +7,8 @@ import { inject, Injectable } from '@angular/core';
 export class ProductOverviewService {
   private http: HttpClient = inject(HttpClient);
 
-  // private BASE_URL = 'https://ctrl-shop-back.vercel.app';
-  private BASE_URL = 'http://localhost:3000';
+  private BASE_URL = 'https://ctrl-shop-back.vercel.app';
+  // private BASE_URL = 'http://localhost:3000';
 
   getProduct(id: string) {
     return this.http.get(`${this.BASE_URL}/product/${id}`);
