@@ -5,11 +5,12 @@ import { ProductOverviewService } from './api/product-overview.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 
 @Component({
   selector: 'app-product-overview',
   standalone: true,
-  imports: [ ReactiveFormsModule, CommonModule ],
+  imports: [ ReactiveFormsModule, CommonModule, NzCarouselModule ],
   templateUrl: './product-overview.component.html',
   styleUrl: './product-overview.component.scss'
 })

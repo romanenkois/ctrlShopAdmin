@@ -11,8 +11,34 @@
         <form
         [formGroup]="productForm">
             <div class="pictures">
-                <div class="pictures-wrapper">
+                <nz-carousel>
                     <!-- to render if the product in DB -->
+                    @if (this.productId) {
+                        @for (imageSrc of product.image; track $index) {
+                            <div nz-carousel-content class="picture">
+                                <img *ngIf="imageSrc" [src]="imageSrc">
+                                <div *ngIf="!imageSrc" class="placeholder"></div>
+                            </div>
+                        }
+                    }
+                    <!-- to render image if its a new product -->
+                    @else {
+                        @for (item of this.imageUrls; track $index) {
+                            <div nz-carousel-content class="picture">
+                                <img *ngIf="item" [src]="item">
+                                <div *ngIf="!item" class="placeholder"></div>
+                            </div>
+                        }
+                        @if (this.imageUrls.length < 1) {
+                            <div nz-carousel-content class="picture">
+                                <div class="placeholder"></div>
+                            </div>
+                        }
+                    }
+                </nz-carousel>
+
+                <!-- <div class="pictures-wrapper">
+                    to render if the product in DB
                     @if (this.productId) {
                         @for (imageSrc of product.image; track $index) {
                             <div class="picture">
@@ -21,7 +47,7 @@
                             </div>
                         }
                     }
-                    <!-- to render image if its a new product -->
+                    to render image if its a new product
                     @else {
                         @for (item of this.imageUrls; track $index) {
                             <div class="picture">
@@ -35,7 +61,7 @@
                             </div>
                         }
                     }
-                </div>
+                </div> -->
 
                 <div class="picture-actions">
                     <form>
