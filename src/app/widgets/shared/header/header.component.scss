@@ -1,0 +1,32 @@
+// * {
+//     outline: 1px red solid;
+// }
+
+.wrapper {
+    .navigation {
+        padding: 12px 42px;
+
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 18px;
+
+        a {
+            div {
+                p {
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: var(--black-color);
+                }
+            }
+        }
+        a:first-child {
+            div {
+                p:first-child {
+                    font-weight: 400;
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}
