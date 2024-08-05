@@ -18,6 +18,11 @@
                             <div nz-carousel-content class="picture">
                                 <img *ngIf="imageSrc" [src]="imageSrc">
                                 <div *ngIf="!imageSrc" class="placeholder"></div>
+                                <button
+                                class="delete-button"
+                                (click)="removeImage(imageSrc)">
+                                    <img src="icons/general/delete.svg">
+                                </button>
                             </div>
                         }
                     }
@@ -37,38 +42,17 @@
                     }
                 </nz-carousel>
 
-                <!-- <div class="pictures-wrapper">
-                    to render if the product in DB
-                    @if (this.productId) {
-                        @for (imageSrc of product.image; track $index) {
-                            <div class="picture">
-                                <img *ngIf="imageSrc" [src]="imageSrc">
-                                <div *ngIf="!imageSrc" class="placeholder"></div>
-                            </div>
-                        }
-                    }
-                    to render image if its a new product
-                    @else {
-                        @for (item of this.imageUrls; track $index) {
-                            <div class="picture">
-                                <img *ngIf="item" [src]="item">
-                                <div *ngIf="!item" class="placeholder"></div>
-                            </div>
-                        }
-                        @if (this.imageUrls.length < 1) {
-                            <div class="picture">
-                                <div class="placeholder"></div>
-                            </div>
-                        }
-                    }
-                </div> -->
-
                 <div class="picture-actions">
                     <form>
                         <label for="picture-upload" class="custom-file-upload">
                             завантажити зображення
                         </label>
-                        <input id="picture-upload" type="file" accept="image/png, image/jpeg">
+                        <input
+                            id="picture-upload"
+                            type="file"
+                            accept="image/png, image/jpeg"
+                            (change)="uploadImage($event)"
+                            >
                     </form>
                 </div>
             </div>
@@ -104,6 +88,12 @@
         (click)="saveProduct()"
         >
             збеееерегтиииии
+        </button>
+        <button
+        class="delete-button"
+        (click)="deleteProduct()"
+        >
+            видалити товар.
         </button>
     </div>
 </div>

@@ -44,11 +44,33 @@
                 flex-direction: column;
                 gap: 8px;
 
+                ::ng-deep .slick-dots {
+                    background-color: rgba($color: #000000, $alpha: 0.5);
+                    padding: 4px;
+                    opacity: 0.5;
+                }
+
+                ::ng-deep .slick-dots li {
+                    // color: red;
+                    background-color: var(--yellow-color);
+                }
+
+                // ::ng-deep .slick-dots li.slick-active button {
+                //     // color: blue;
+                //     // background-color: blue;
+                //     mix-blend-mode: difference;
+                // }
+
                 nz-carousel {
+
+                    width: 100%;
+                    height: 300px;
+
                     .picture {
-                        flex-grow: 1;
-                        width: 49%;
-                        height: 70px;
+                        // flex-grow: 1;
+                        width: 100%;
+                        height: 100%;
+                        position: relative;
                         box-sizing: border-box;
 
                         img {
@@ -61,22 +83,36 @@
                             height: 100%;
                             background-color: var(--dark-color);
                         }
-                    }
 
-                    .picture:first-child {
-                        width: 100%;
-                        height: 300px;
+                        .delete-button {
+                            position: absolute;
+                            z-index: 5;
+                            top: 8px;
+                            right: 8px;
 
-                        img {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: cover;
+                            padding: 5px;
+                            display: flex;
+
+                            border: none;
+                            background-color: var(--white-color);
+
+                            cursor: pointer;
+
+                            img {
+                                width: 28px;
+                                height: 28px;
+                                pointer-events: none;
+                            }
                         }
-                        .placeholder {
-                            width: 100%;
-                            height: 100%;
-                            background-color: var(--dark-color);
+                        .delete-button:hover {
+                            transition: 0.3s;
+                            box-shadow: var(--small-shadow);
                         }
+                        .delete-button:active {
+                            transition: 0.2s;
+                            transform: scale(0.9);
+                        }
+
                     }
                 }
 
@@ -166,7 +202,11 @@
 
 
     .item-actions {
-        .save-button {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        button {
             width: 100%;
             padding: 8px 16px;
             box-sizing: border-box;
@@ -178,6 +218,17 @@
             transition: all 0.2s ease-out;
 
             border: none;
+            background-color: var(--light-gray-color);
+        }
+        button:hover {
+            background-color: var(--light-gray-hover-color);
+        }
+        button:active {
+            transform: scale(0.97);
+            background-color: var(--light-gray-hover-color);
+        }
+
+        .save-button {
             background-color: var(--yellow-color);
         }
         .save-button:hover {

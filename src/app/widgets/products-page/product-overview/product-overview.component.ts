@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
+import { ProductsServiceService } from '../products-service.service';
 
 @Component({
   selector: 'app-product-overview',
@@ -21,6 +22,7 @@ export class ProductOverviewComponent implements OnInit {
   private http: HttpClient = inject(HttpClient);
 
   private productOverviewService: ProductOverviewService = inject(ProductOverviewService);
+  private productsService: ProductsServiceService = inject(ProductsServiceService);
 
   productId: string = '';
   product: any = [];
@@ -71,6 +73,8 @@ export class ProductOverviewComponent implements OnInit {
     ).subscribe(
       responce => {
         console.log('Product uploaded successfully', responce);
+        this.productsService.getProducts();
+
       },
       error => {
         console.log('Error uploading product', error);
@@ -86,6 +90,28 @@ export class ProductOverviewComponent implements OnInit {
         console.log('Product not found');
       }
     });
+  }
+
+  uploadImage(event: Event) {
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0]; // You can handle multiple files if needed
+      this.images.push(file);
+      console.log('Image uploaded', file);
+      console.log('Images', this.images);
+    }
+  }
+
+  deleteProduct() {
+    this.productOverviewService.deleteProduct(this.productId).subscribe((res)=>{
+      console.log('Product deleted successfully', res);
+      this.router.navigate(['./products']);
+    })
+  }
+
+  removeImage(input: any) {
+    console.log('Remove image', input);
   }
 
   // Used to load image from assets folder, used to load some default image

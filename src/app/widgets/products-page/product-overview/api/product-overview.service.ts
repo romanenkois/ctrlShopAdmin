@@ -14,6 +14,10 @@ export class ProductOverviewService {
     return this.http.get(`${this.BASE_URL}/product/${id}`);
   }
 
+  getProducts() {
+    return this.http.get(`${this.BASE_URL}/products`);
+  }
+
   updateProduct(id: string, product: any) {
     throw new Error('Method not implemented.');
   }
@@ -41,5 +45,9 @@ export class ProductOverviewService {
     });
 
     return this.http.post(`${this.BASE_URL}/product`, formData, { headers });
+  }
+
+  deleteProduct(id: string) {
+    return this.http.delete(`${this.BASE_URL}/product/${id}`);
   }
 }

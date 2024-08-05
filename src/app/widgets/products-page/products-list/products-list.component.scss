@@ -1,6 +1,6 @@
-// * {
-//     outline: 1px red solid;
-// }
+* {
+    outline: 1px red solid;
+}
 
 .wrapper {
     display: flex;
@@ -49,6 +49,8 @@
             .picture {
                 width: 150px;
                 height: 70px;
+                cursor: pointer;
+
                 img {
                     width: 100%;
                     height: 100%;
@@ -60,29 +62,32 @@
                     background-color: var(--dark-color);
                 }
             }
+
             .data {
                 width: 100%;
                 display: flex;
                 flex-direction: row;
                 gap: 6px;
 
-
                 .general {
                     width: 50%;
-
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
                     gap: 4px;
 
                     p {
+                        height: 20px;
+                        font-size: 16px;
                         overflow: hidden;
+                        word-break: break-all;
                     }
                 }
                 .description {
                     width: 50%;
 
                     p {
+                        height: 100%;
                         word-break: break-all;
                         overflow: hidden;
                     }
@@ -90,4 +95,18 @@
             }
         }
     }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        .content {
+            .item {
+                .picture {
+                    width: 100px;
+                    height: 70px;
+                }
+            }
+        }
+    }
+
 }
