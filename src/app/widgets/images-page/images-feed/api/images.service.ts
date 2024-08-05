@@ -9,8 +9,8 @@ export class ImagesService {
 
   images: WritableSignal<any> = signal([]);
 
-  // private BASE_URL = 'https://ctrl-shop-back.vercel.app';
-  private BASE_URL = 'http://localhost:3000';
+  private BASE_URL = 'https://ctrl-shop-back.vercel.app';
+  // private BASE_URL = 'http://localhost:3000';
 
   // constructor() { this.getImages()}
 
