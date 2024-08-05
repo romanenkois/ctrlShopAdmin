@@ -14,6 +14,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/orders/orders.component')
   },
   {
+    path: 'images',
+    loadComponent: () => import('./pages/images/images.component')
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }

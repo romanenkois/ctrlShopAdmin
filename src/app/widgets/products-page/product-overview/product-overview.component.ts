@@ -103,15 +103,17 @@ export class ProductOverviewComponent implements OnInit {
     }
   }
 
-  deleteProduct() {
-    this.productOverviewService.deleteProduct(this.productId).subscribe((res)=>{
-      console.log('Product deleted successfully', res);
-      this.router.navigate(['./products']);
-    })
-  }
-
   removeImage(input: any) {
     console.log('Remove image', input);
+  }
+
+  deleteProduct() {
+    this.productOverviewService.deleteProduct(this.productId).subscribe(
+      responce => {
+      console.log('Product deleted successfully', responce);
+      this.productsService.getProducts();
+      this.router.navigate(['./products']);
+    })
   }
 
   // Used to load image from assets folder, used to load some default image
