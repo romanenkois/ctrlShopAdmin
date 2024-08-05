@@ -1,8 +1,21 @@
 .wrapper {
     .header {
+        padding: 12px 42px;
         position: sticky;
     }
     .router-content {
+        padding: 12px 42px;
         position: relative;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        .header {
+            padding: 12px;
+        }
+        .router-content {
+            padding: 12px;
+        }
     }
 }

@@ -3,8 +3,6 @@
 // }
 
 .wrapper {
-    padding: 12px 42px;
-
     .content {
         display: flex;
         flex-direction: row;
@@ -14,7 +12,24 @@
             width: 60%;
         }
         .overview {
+            background-color: var(--white-color);
             width: 40%;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        .content {
+            flex-direction: column;
+            gap: 42px;
+
+            .list {
+                width: 100%;
+            }
+            .overview {
+                width: 100%;
+            }
         }
     }
 }

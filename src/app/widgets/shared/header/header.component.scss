@@ -4,11 +4,12 @@
 
 .wrapper {
     .navigation {
-        padding: 12px 42px;
+        // padding: 12px 42px;
 
         display: flex;
         flex-direction: row;
         align-items: baseline;
+        flex-wrap: wrap;
         gap: 18px;
 
         a {
@@ -27,6 +28,15 @@
                     font-size: 24px;
                 }
             }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .wrapper {
+        .navigation {
+            flex-direction: column;
+            gap: 4px
         }
     }
 }
