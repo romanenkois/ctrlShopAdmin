@@ -1,1 +1,11 @@
-<p>images-feed works!</p>
+<div class="wrapper">
+    <div class="content">
+        @for (item of this.images(); track $index) {
+            <div class="card">
+                <div class="picture">
+                    <img [src]="item" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
