@@ -1,11 +1,12 @@
 .wrapper {
     .header {
         padding: 12px 42px;
+        top: 0px;
         position: sticky;
+        background-color: var(--white-color);
     }
     .router-content {
         padding: 12px 42px;
-        position: relative;
     }
 }
 
